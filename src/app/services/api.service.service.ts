@@ -31,7 +31,6 @@ export class APIServiceService {
       const companyWEmployees = await this.http.get<CompanyWithEmployees>(`${environment.apiUrl}/company/get/${id}`).toPromise();
       return companyWEmployees || undefined;
     } catch (error) {
-      console.log(error);
       console.log('There is an error in GET request');
       return undefined;
     }
@@ -42,7 +41,6 @@ export class APIServiceService {
       const createdCompany = await this.http.post<Company>(`${environment.apiUrl}/company/post`, company).toPromise();
       return createdCompany;
     } catch (error) {
-      console.error(error);
       console.log('There is an error in POST request');
       return undefined;
     }
@@ -50,12 +48,9 @@ export class APIServiceService {
 
   async createEmployee(employee: EmployeeCreateDto): Promise<Employee | undefined> {
     try {
-      const createdEmployee = await this.http
-        .post<Employee>(`${environment.apiUrl}/employee/post`, employee)
-        .toPromise();
+      const createdEmployee = await this.http.post<Employee>(`${environment.apiUrl}/employee/post`, employee).toPromise();
       return createdEmployee;
     } catch (error) {
-      console.error(error);
       console.log('There is an error in POST request');
       return undefined;
     }
