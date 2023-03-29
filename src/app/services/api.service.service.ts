@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { CompanyCreateDto } from '../models/company-create-dto';
-import { CompanyWithEmployees } from '../models/company-with-employees.indto';
-import { Company } from '../models/company.indto';
-import { EmployeeCreateDto } from '../models/employee-create-dto';
-import { Employee } from '../models/employee.indto';
+import { CompanyCreateDto } from '../outDTO/company-create-dto';
+import { Company } from '../models/company.model';
+import { EmployeeCreateDto } from '../outDTO/employee-create-dto';
+import { Employee } from '../models/employee.model';
+import { CompanyDto } from '../inDTO/company.dto';
+import { CompanyWithEmployees } from '../inDTO/company-with-employees.indto';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,26 +16,23 @@ export class APIServiceService {
 
   constructor(private http: HttpClient) { }
 
-  async getCompanies(): Promise<Company[]> {
+  async getCompanies(): Promise<CompanyDto | undefined> {
     try {
-      const companies = await this.http.get<Company[]>(`${environment.apiUrl}/company/get`).toPromise();
-      return companies || [];
+      const companies = await this.http.get<CompanyDto>(`${environment.apiUrl}/company/get`).toPromise();
+      return companies || undefined;
     } catch (error) {
-      console.error(error);
-      console.log('Ocurrió un error al obtener las empresas');
-      return [];
+      console.log('There is an error in GET request');
+      return undefined;
     }
   }
 
   async getCompanyById(id: string): Promise<CompanyWithEmployees | undefined> {
     try {
-      const companyWEmployees = await this.http
-        .get<CompanyWithEmployees>(`${environment.apiUrl}/company/${id}`)
-        .toPromise();
-      return companyWEmployees;
+      const companyWEmployees = await this.http.get<CompanyWithEmployees>(`${environment.apiUrl}/company/get/${id}`).toPromise();
+      return companyWEmployees || undefined;
     } catch (error) {
-      console.error(error);
-      console.log('Ocurrió un error al obtener la empresa');
+      console.log(error);
+      console.log('There is an error in GET request');
       return undefined;
     }
   }
@@ -44,7 +43,7 @@ export class APIServiceService {
       return createdCompany;
     } catch (error) {
       console.error(error);
-      console.log('Ocurrió un error al crear la empresa');
+      console.log('There is an error in POST request');
       return undefined;
     }
   }
@@ -57,7 +56,7 @@ export class APIServiceService {
       return createdEmployee;
     } catch (error) {
       console.error(error);
-      console.log('Ocurrió un error al crear el empleado');
+      console.log('There is an error in POST request');
       return undefined;
     }
   }

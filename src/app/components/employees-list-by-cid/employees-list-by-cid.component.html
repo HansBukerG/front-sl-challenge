@@ -1,0 +1,30 @@
+<div class="row mb-3">
+    <label>Rut Empresa: {{ company.rut }}</label>
+    <label>Nombre Empresa: {{ company.name }}</label>
+    <label>Dirección: {{ company.address }}</label>
+    <label>Teléfono: {{ company.phone }}</label>
+</div>
+<div class="row border border-rounded text-center p-1">
+    <div class="col">
+        <label>rut</label>
+    </div>
+    <div class="col">
+        <label>Nombre</label>
+    </div>
+    <div class="col">
+        <label>email:</label>
+    </div>
+</div>
+<div *ngFor="let employee of employeesList">
+    <div class="row border rounded text-center p-1">
+        <div class="col">
+           <label>{{employee.rut_employee}}</label>
+        </div>
+        <div class="col">
+           <label>{{employee.full_name}}</label>
+        </div>
+        <div class="col">
+           <label>{{employee.email}}</label>
+        </div>
+    </div>
+</div>
