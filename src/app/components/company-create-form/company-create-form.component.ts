@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CompanyCreateDto } from 'src/app/outDTO/company-create-dto';
+import { APIServiceService } from 'src/app/services/api.service.service';
 
 @Component({
   selector: 'app-company-create-form',
@@ -7,9 +10,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./company-create-form.component.css']
 })
 export class CompanyCreateFormComponent implements OnInit {
-  public formCompany: FormGroup;
+  public formCompany!: FormGroup;
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private apiService: APIServiceService,
+    private router: Router
   ) {
 
   }
@@ -17,36 +22,43 @@ export class CompanyCreateFormComponent implements OnInit {
     this.formCompany = this.formInit();
   }
 
-  formInit():FormGroup{
+  formInit(): FormGroup {
     return this.formBuilder.group(
       {
-        tipo : new FormControl('',[Validators.required]),
-        descripcion: new FormControl('',Validators.required),
-        valor: new FormControl(0,[Validators.required,Validators.min(0)])
+        rut: new FormControl('', [Validators.required]),
+        name: new FormControl('', [Validators.required]),
+        address: new FormControl('', Validators.required),
+        phone: new FormControl('', [Validators.required])
       }
     )
   }
 
-  onSubmit(formulario:FormGroup){
-    if(formulario.invalid){
+  async onSubmit(form: FormGroup) {
+    if (form.invalid) {
       console.log('Faltan campos por completar');
+      return;
     }
-    else{
-      if (formulario.value.tipo === 'Ingreso') {
-        this.ingreso =  new Ingreso(
-          formulario.value.descripcion,
-          formulario.value.valor
-          )
 
-          this.servicioIngreso.ingresos.push(this.ingreso);
-        } else {
-          this.egreso =  new Egreso(
-            formulario.value.descripcion,
-            formulario.value.valor
-            )
+    let company: CompanyCreateDto = {
+      name: form.value.name,
+      address: form.value.address,
+      rut: form.value.rut,
+      phone: form.value.phone,
+    }
 
-          this.servicioEgreso.egresos.push(this.egreso);
+    try {
+      const newCompany = await this.apiService.createCompany(company)
+      if (newCompany) {
+        console.log('A new company has been created!');
+
+      } else {
+        console.log('Somethign went wrong with the creation of the new Company');
       }
+    } catch (error) {
+      console.log('Something went wrong on POST command.');
+    } finally {
+      this.router.navigate(['companies']);
     }
+
   }
 }

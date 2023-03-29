@@ -9,6 +9,7 @@ import { CompanyListComponent } from './components/company-list/company-list.com
 import { EmployeesListByCIdComponent } from './components/employees-list-by-cid/employees-list-by-cid.component';
 import { CompanyCreateFormComponent } from './components/company-create-form/company-create-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployeesCreateFormComponent } from './components/employees-create-form/employees-create-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StartMenuComponent,
     CompanyListComponent,
     EmployeesListByCIdComponent,
-    CompanyCreateFormComponent
+    CompanyCreateFormComponent,
+    EmployeesCreateFormComponent
   ],
   imports: [
     BrowserModule,
