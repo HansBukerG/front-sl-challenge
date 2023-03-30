@@ -15,9 +15,8 @@ export class CompanyCreateFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private apiService: APIServiceService,
     private router: Router
-  ) {
-
-  }
+  ) {}
+  
   ngOnInit(): void {
     this.formCompany = this.formInit();
   }

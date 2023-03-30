@@ -16,7 +16,7 @@ export class EmployeesListByCIdComponent implements OnInit {
   constructor(
     private apiService: APIServiceService,
     private activatedRoute: ActivatedRoute,
-    private router:Router
+    private router: Router
   ) {
   }
 
@@ -39,6 +39,6 @@ export class EmployeesListByCIdComponent implements OnInit {
   }
 
   goToFormEmployee() {
-
+    this.router.navigate(['employees/create/', this.companyId]);
   }
 }

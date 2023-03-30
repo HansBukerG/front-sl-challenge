@@ -1,1 +1,31 @@
-<p>employees-create-form works!</p>
+<div class="row">
+    <div class="col-xs-1-12">
+      <div class="card">
+          <div class="card-header">
+              <h3 class="card-title">Formulario de creación de Empleado</h3>
+          </div>
+          <form class="card-body" [formGroup]="formEmployee" (ngSubmit)="onSubmit(formEmployee)">
+              <div class="row mb-2">
+                  <div class="col-md-2">Rut: </div>
+                  <div class="col-md-10"><input class="form-control" type="text" formControlName="rutEmployee"></div>
+                  <div *ngIf="formEmployee.get('rutEmployee')?.touched && formEmployee.get('rutEmployee')?.errors?.['required']" class="error_alert">Debes ingresar este campo</div>
+              </div>
+              <div class="row mb-2">
+                  <div class="col-md-2">Nombre Completo: </div>
+                  <div class="col-md-10"><input class="form-control" type="text" formControlName="fullName"></div>
+                  <div *ngIf="formEmployee.get('fullName')?.touched && formEmployee.get('fullName')?.errors?.['required']" class="error_alert">Debes ingresar este campo</div>
+              </div>
+              <div class="row mb-2">
+                  <div class="col-md-2">Email: </div>
+                  <div class="col-md-10"><input class="form-control" type="text" formControlName="email"></div>
+                  <div *ngIf="formEmployee.get('email')?.touched && formEmployee.get('email')?.errors?.['required']" class="error_alert">Debes ingresar este campo</div>
+              </div>
+              <div class="row mb-2 text-center">
+                <div class="col-md-2 ">
+                  <button class="btn btn-primary" type="submit" >Agregar Empleado</button>
+                </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>

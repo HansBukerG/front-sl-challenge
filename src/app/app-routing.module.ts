@@ -24,7 +24,7 @@ const routes: Routes = [
     component: CompanyCreateFormComponent
   },
   {
-    path: 'employees/create',
+    path: 'employees/create/:id',
     component: EmployeesCreateFormComponent
   },
 ];

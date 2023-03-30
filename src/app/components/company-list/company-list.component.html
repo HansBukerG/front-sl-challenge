@@ -5,19 +5,19 @@
 </div>
 <div class="row border border-rounded text-center p-1">
     <div class="col">
-        <label>rut</label>
+        <label>Rut:</label>
     </div>
     <div class="col">
-        <label>Nombre</label>
+        <label>Nombre:</label>
     </div>
     <div class="col">
         <label>Dirección:</label>
     </div>
     <div class="col">
-        <label>Teléfono</label>
+        <label>Teléfono:</label>
     </div>
     <div class="col">
-        <label>Opción</label>
+        <label>Opción:</label>
     </div>
 </div>
 <div *ngFor="let company of companyList">
@@ -36,7 +36,7 @@
         </div>
         <div class="col">
             <div class="row">
-                <div class="col"><button type="button" class="btn btn-primary" (click)="navigateTo(company.id)">Ver Empleados</button></div>
+                <div class="col"><button type="button" class="btn btn-primary" (click)="navigateTo(company.id)">Mis Empleados</button></div>
                 <div class="col"><button type="button" class="btn btn-danger">Eliminar</button></div>
             </div>
         </div>
