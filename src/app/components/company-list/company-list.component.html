@@ -1,1 +1,44 @@
-<p>company-list works!</p>
+<div class="row mb-3">
+    <div class="col">
+        <button type="button" name="" id="" class="btn btn-primary" (click)="goToFormCompany()">Agregar Empresa</button>
+    </div>
+</div>
+<div class="row border border-rounded text-center p-1">
+    <div class="col">
+        <label>Rut:</label>
+    </div>
+    <div class="col">
+        <label>Nombre:</label>
+    </div>
+    <div class="col">
+        <label>Dirección:</label>
+    </div>
+    <div class="col">
+        <label>Teléfono:</label>
+    </div>
+    <div class="col">
+        <label>Opción:</label>
+    </div>
+</div>
+<div *ngFor="let company of companyList">
+    <div class="row border border-rounded text-center p-2">
+        <div class="col">
+            <label>{{ company.rut }}</label>
+        </div>
+        <div class="col">
+            <label>{{ company.name }}</label>
+        </div>
+        <div class="col">
+            <label>{{ company.address }}</label>
+        </div>
+        <div class="col">
+            <label>{{ company.phone }}</label>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><button type="button" class="btn btn-primary" (click)="navigateTo(company.id)">Mis Empleados</button></div>
+                <div class="col"><button type="button" class="btn btn-danger" (click)="deleteCompany(company.id)">Eliminar</button></div>
+            </div>
+        </div>
+    </div>
+</div>

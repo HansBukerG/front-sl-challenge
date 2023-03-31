@@ -1,0 +1,44 @@
+<div class="row mb-3">
+    <label>Rut Empresa: {{ company.rut }}</label>
+    <label>Nombre Empresa: {{ company.name }}</label>
+    <label>Dirección: {{ company.address }}</label>
+    <label>Teléfono: {{ company.phone }}</label>
+</div>
+<div class="row mb-3">
+    <div class="col-md-3">
+        <button type="button" name="" id="" class="btn btn-primary" (click)="goToFormEmployee()">Agregar Empleado</button>
+    </div>
+    <div class="offset-md-6 col-md-3">
+        <button type="button" name="" id="" class="btn btn-primary" (click)="goToHome()">Volver</button>
+    </div>
+</div>
+<div class="row border border-rounded text-center p-1">
+    <div class="col">
+        <label>Rut:</label>
+    </div>
+    <div class="col">
+        <label>Nombre:</label>
+    </div>
+    <div class="col">
+        <label>Email:</label>
+    </div>
+    <div class="col">
+        <label>Accion:</label>
+    </div>
+</div>
+<div *ngFor="let employee of employeesList">
+    <div class="row border rounded text-center p-1">
+        <div class="col">
+           <label>{{employee.rut_employee}}</label>
+        </div>
+        <div class="col">
+           <label>{{employee.full_name}}</label>
+        </div>
+        <div class="col">
+           <label>{{employee.email}}</label>
+        </div>
+        <div class="col">
+            <div class="col"><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.id)">Eliminar</button></div>
+        </div>
+    </div>
+</div>
