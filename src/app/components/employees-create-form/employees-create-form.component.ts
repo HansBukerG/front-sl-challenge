@@ -35,7 +35,6 @@ export class EmployeesCreateFormComponent implements OnInit {
   }
 
   async onSubmit(form: FormGroup) {
-
     if (form.invalid) {
       console.log('Faltan campos por completar');
       return;
@@ -58,8 +57,12 @@ export class EmployeesCreateFormComponent implements OnInit {
     } catch (error) {
       console.log('Something went wrong on POST command.');
     } finally {
-      this.router.navigate(['companies/employees', this.companyId]);
+      this.goEmployeesList();
     }
+  }
+
+  goEmployeesList() {
+    this.router.navigate(['companies/employees', this.companyId]);
   }
 
 }

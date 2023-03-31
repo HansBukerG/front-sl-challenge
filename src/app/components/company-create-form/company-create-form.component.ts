@@ -15,8 +15,8 @@ export class CompanyCreateFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private apiService: APIServiceService,
     private router: Router
-  ) {}
-  
+  ) { }
+
   ngOnInit(): void {
     this.formCompany = this.formInit();
   }
@@ -56,8 +56,10 @@ export class CompanyCreateFormComponent implements OnInit {
     } catch (error) {
       console.log('Something went wrong on POST command.');
     } finally {
-      this.router.navigate(['companies']);
+      this.goToCompanyList();
     }
-
+  }
+  goToCompanyList () {
+    this.router.navigate(['companies']);
   }
 }

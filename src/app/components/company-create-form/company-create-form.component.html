@@ -7,28 +7,38 @@
         <form class="card-body" [formGroup]="formCompany" (ngSubmit)="onSubmit(formCompany)">
             <div class="row mb-2">
                 <div class="col-md-2">Rut: </div>
-                <div class="col-md-10"><input class="form-control" type="text" formControlName="rut"></div>
-                <div *ngIf="formCompany.get('rut')?.touched && formCompany.get('rut')?.errors?.['required']" class="error_alert">Debes ingresar este campo</div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" formControlName="rut">
+                  <div *ngIf="formCompany.get('rut')?.touched && formCompany.get('rut')?.errors?.['required']" class="error_alert">Debes ingresar este campo.</div>
+                </div>
             </div>
             <div class="row mb-2">
                 <div class="col-md-2">Nombre: </div>
-                <div class="col-md-10"><input class="form-control" type="text" formControlName="name"></div>
-                <div *ngIf="formCompany.get('name')?.touched && formCompany.get('name')?.errors?.['required']" class="error_alert">Debes ingresar este campo</div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" formControlName="name">
+                  <div *ngIf="formCompany.get('name')?.touched && formCompany.get('name')?.errors?.['required']" class="error_alert">Debes ingresar este campo.</div>
+                </div>
             </div>
             <div class="row mb-2">
                 <div class="col-md-2">Dirección: </div>
-                <div class="col-md-10"><input class="form-control" type="text" formControlName="address"></div>
-                <div *ngIf="formCompany.get('address')?.touched && formCompany.get('address')?.errors?.['required']" class="error_alert">Debes ingresar este campo</div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" formControlName="address">
+                  <div *ngIf="formCompany.get('address')?.touched && formCompany.get('address')?.errors?.['required']" class="error_alert">Debes ingresar este campo.</div>
+                </div>
             </div>
             <div class="row mb-2">
                 <div class="col-md-2">Teléfono: </div>
-                <div class="col-md-10"><input class="form-control" type="text" formControlName="phone"></div>
-                <div *ngIf="formCompany.get('phone')?.touched && formCompany.get('phone')?.errors?.['required']" class="error_alert">Debes ingresar este campo</div>
-
+                <div class="col-md-10">
+                  <input class="form-control" type="text" formControlName="phone">
+                  <div *ngIf="formCompany.get('phone')?.touched && formCompany.get('phone')?.errors?.['required']" class="error_alert">Debes ingresar este campo.</div>
+                </div>
             </div>
             <div class="row mb-2 text-center">
               <div class="col-md-2 ">
                 <button class="btn btn-primary" type="submit" >Agregar Empresa</button>
+              </div>
+              <div class="col-md-2 ">
+                <button class="btn btn-danger" (click)="goToCompanyList()">Cancelar</button>
               </div>
           </div>
         </form>

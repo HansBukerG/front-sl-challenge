@@ -1,0 +1,3 @@
+docker build --tag front-sl-challenge .
+
+docker run -it -d -p 8090:8080 --name front-sl-challenge front-sl-challenge

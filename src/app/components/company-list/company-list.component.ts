@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Company } from 'src/app/models/company.model';
 import { APIServiceService } from 'src/app/services/api.service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-company-list',
@@ -19,7 +21,6 @@ export class CompanyListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getCompanyList();
-
   }
 
   getCompanyList = async (): Promise<void> => {
@@ -29,9 +30,29 @@ export class CompanyListComponent implements OnInit {
         this.companyList = companies.company;
       }
     } catch (error) {
-      console.log('There is an error with REQUEST');
+      console.log('There is an error with request');
     }
   };
+
+  deleteCompany = async (id: number): Promise<void> => {
+    Swal.fire({
+      title: '¿Estás seguro de que deseas eliminar la empresa?',
+      text: 'Esta acción no puede ser revertida',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const deletedCompany = this.apiService.deleteCompany(id);
+        Swal.fire('¡Empresa eliminada!', '', 'success');
+        this.getCompanyList();
+      } else if (result.isDenied) {
+        Swal.fire('Cancelado', 'No se eliminó la empresa', 'info');
+      }
+    })
+  }
 
   navigateTo(id: number): void {
     this.router.navigate(['companies/employees', id]);
@@ -40,5 +61,6 @@ export class CompanyListComponent implements OnInit {
   goToFormCompany(): void {
     this.router.navigate(['companies/create']);
   }
+
 
 }

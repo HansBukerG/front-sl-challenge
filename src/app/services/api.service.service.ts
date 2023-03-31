@@ -55,4 +55,24 @@ export class APIServiceService {
       return undefined;
     }
   }
+
+  async deleteCompany(id: number): Promise<any | undefined> {
+    try {
+      const result = await this.http.delete(`${environment.apiUrl}/company/delete/${id}`).toPromise();
+      return result;
+    } catch (error) {
+      console.log('There is an error in DELETE request');
+      return 0;
+    }
+  }
+
+  async deleteEmployee(id: number): Promise<any | undefined> {
+    try {
+      const result = await this.http.delete(`${environment.apiUrl}/employee/delete/${id}`).toPromise();
+      return result;
+    } catch (error) {
+      console.log('There is an error in DELETE request');
+      return 0;
+    }
+  }
 }
