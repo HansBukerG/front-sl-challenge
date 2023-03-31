@@ -1,27 +1,104 @@
-# FrontSlChallenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
+# front-sl-challenge
 
-## Development server
+This project is the front-end of the SimplyLatam challenge, built using Angular and stored on Github.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Authors
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [@HansBukerG](https://www.github.com/HansBukerG)
 
-## Build
+- [@Linkedin](https://www.linkedin.com/in/hans-buker-guti%C3%A9rrez-653696136/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Deployment
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To initiate this project, you need to create a folder called environments and an environment.ts file within the ./src directory (which would be located at ./src/environments/environment.ts). The environment.ts file should contain the following code:
 
-## Running end-to-end tests
+export const environment = {
+  apiUrl: 'API-URL',
+};
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Next, you need to run the following commands to install the NODE packages:
 
-## Further help
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Then, you need to build the Angular project using the command:
+
+ng build
+
+Finally, to start this project, run the command:
+
+ng serve
+## Environment Variables
+
+By default, Angular system does not search for a specific URL to execute its commands. However, if you need to define the API_URL parameter, I recommend using the following parameter:
+
+https://localhost:8081
+
+
+
+## API Reference
+
+#### Create Company
+
+```http
+    POST /api_url/company/post
+```
+#### Get All Companies
+
+```http
+    GET /api_url/company/get
+```
+#### Get Company by ID
+
+```http
+    GET /api_url/company/get/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` | Required. ID of company to get |
+
+#### Delete Company by ID
+
+```http
+  DELETE /api_url/company/delete/id
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | Required. ID of company to delete |
+
+#### Create Employee
+
+```http
+  POST /api_url/employee/post
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | Required. ID of company to delete |
+
+#### Delete Employee by ID
+
+```http
+  DELETE /api_url/employee/delete/id
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | Required. ID of employee to delete |
+
+## Links to the Project
+ Live url:
+
+  - [https://front-sl-challenge.fly.dev](https://front-sl-challenge.fly.dev)
+
+Github Project:
+ - [https://github.com/HansBukerG/front-sl-challenge](https://github.com/HansBukerG/front-sl-challenge)
+
+
+ 
+
+
