@@ -45,6 +45,16 @@ https://localhost:8081
 ```http
     POST /api_url/company/post
 ```
+
+DTO required:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | `string` | The name of the company |
+| `rut` | `string` | The RUT of the company |
+| `address` | `string` | The address of the company |
+| `phone` | `string` | The phone number of the company |
+
 #### Get All Companies
 
 ```http
@@ -75,10 +85,14 @@ https://localhost:8081
 ```http
   POST /api_url/employee/post
 ```
+DTO required:
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | Required. ID of company to delete |
+| Field | Type | Description |
+|-------|------|-------------|
+| `idCompany` | `string` | The ID of the company associated with the employee |
+| `rutEmployee` | `string` | The RUT of the employee |
+| `fullName` | `string` | The full name of the employee |
+| `email` | `string` | The email of the employee |
 
 #### Delete Employee by ID
 
@@ -89,6 +103,11 @@ https://localhost:8081
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | Required. ID of employee to delete |
+
+
+
+
+
 
 ## Links to the Project
  Live url:
